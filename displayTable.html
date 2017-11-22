@@ -1,0 +1,123 @@
+<!-- Daniel King
+     Generate a table with ability to delete
+     November 2017 -->
+<html>
+    <head>
+        <title>Network Data</title>
+        <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"> 
+        <style>
+            
+            .digit {
+                text-align: center;
+            }
+            
+            .images {
+                width: 65px;
+                height: 80px;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+<body>
+    <nav class="navbar navbar-ex-lg navbar-dark bg-dark sticky-top">
+        <h2 class="navbar-text" >Neural Network Data Table</h2>
+        <div id="navbarNav ">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!--<h1>Neural Network Data Table</h1> -->
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <th></th>
+                <th>recognized digit</th>
+                <th>image</th>
+                <th>arbitrary value</th>
+                <th>description</th>
+                <th>category</th>
+            </tr> 
+        </thead>
+        <tbody>
+        <!-- These will be generated dynamically -->    
+        <tr>
+            <td><form action='index.php' method='post'><input type='hidden' name='action' value='delete' /><input type='hidden' name='id' value='5' /><input type='submit' value='Delete' class="btn btn-outline-primary btn-sm"></form></td>
+            <td class="digit">6</td>
+            <td><img class="images" src="numberPhoto.jpg" alt="numbers"></td>
+            <td>Lorem ipsum dolor sit amet</td>
+            <td>This is a task</td>
+            <td>uncategorized</td>
+        </tr>
+        <tr>
+            <td><form action='index.php' method='post'><input type='hidden' name='action' value='delete' /><input type='hidden' name='id' value='2' /><input type='submit' value='Delete' class="btn btn-outline-primary btn-sm"></form></td>
+            <td class="digit">3</td>
+            <td></td>
+            <td>Lorem ipsum dolor sit amet</td>
+            <td>Develop a web-based task manager.</td>
+            <td>work</td>
+        </tr>
+        <tr>
+            <td><form action='index.php' method='post'><input type='hidden' name='action' value='delete' /><input type='hidden' name='id' value='3' /><input type='submit' value='Delete' class="btn btn-outline-primary btn-sm"></form></td>
+            <td class="digit">2</td>
+            <td><img class="images"src="numberPhoto.jpg" alt="numbers"></td>
+            <td>Database homework</td>
+            <td>Complete database homework.</td>
+            <td>school</td>
+        </tr>
+        <tr>
+            <td><form action='index.php' method='post'><input type='hidden' name='action' value='delete' /><input type='hidden' name='id' value='3' /><input type='submit' value='Delete' class="btn btn-outline-primary btn-sm"></form></td>
+            <td class="digit">4</td>
+            <td></td>
+            <td>Database homework</td>
+            <td>Complete database homework.</td>
+            <td>school</td>
+        </tr>
+        <tr>
+            <td><form action='index.php' method='post'><input type='hidden' name='action' value='delete' /><input type='hidden' name='id' value='3' /><input type='submit' value='Delete' class="btn btn-outline-primary btn-sm"></form></td>
+            <td class="digit">8</td>
+            <td></td>
+            <td>Database homework</td>
+            <td>Complete database homework.</td>
+            <td>school</td>
+        </tr>
+            <tr>
+            <td><form action='index.php' method='post'><input type='hidden' name='action' value='delete' /><input type='hidden' name='id' value='3' /><input type='submit' value='Delete' class="btn btn-outline-primary btn-sm"></form></td>
+            <td class="digit">7</td>
+            <td></td>
+            <td>Database homework</td>
+            <td>Complete database homework.</td>
+            <td>school</td>
+        </tr>
+            <tr>
+            <td><form action='index.php' method='post'><input type='hidden' name='action' value='delete' /><input type='hidden' name='id' value='3' /><input type='submit' value='Delete' class="btn btn-outline-primary btn-sm"></form></td>
+            <td class="digit">1</td>
+            <td></td>
+            <td>Database homework</td>
+            <td>Complete database homework.</td>
+            <td>school</td>
+        </tr><tr>
+            <td><form action='index.php' method='post'><input type='hidden' name='action' value='delete' /><input type='hidden' name='id' value='3' /><input type='submit' value='Delete' class="btn btn-outline-primary btn-sm"></form></td>
+            <td class="digit">2</td>
+            <td><img class="images"src="numberPhoto.jpg" alt="numbers"></td>
+            <td>Database homework</td>
+            <td>Complete database homework.</td>
+            <td>school</td>
+        </tr>
+        <tr>
+            <td><form action='index.php' method='post'><input type='hidden' name='action' value='delete' /><input type='hidden' name='id' value='3' /><input type='submit' value='Delete' class="btn btn-outline-primary btn-sm"></form></td>
+            <td class="digit">7</td>
+            <td></td>
+            <td>Database homework</td>
+            <td>Complete database homework.</td>
+            <td>school</td>
+        </tr>    
+            
+        </tbody>
+    </table>
+</body>
+</html>
