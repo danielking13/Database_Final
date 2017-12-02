@@ -1,6 +1,6 @@
 # Database_Final
-##Database Final
-###Team Members:
+## Database Final
+### Team Members:
 
 Daniel King
 
