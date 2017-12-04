@@ -38,7 +38,7 @@
     <div class="col-lg-2">
       <div id="display">
       </div>
-      <div id="acceptTag"><button id="accept" class='btn' onclick="acceptTag()">&#10004;</button></div>
+      <div id="acceptTag"><button id="accept" class='btn' onclick="save()">&#10004;</button></div>
       <div id="declineTag"><button id="decline" class='btn' onclick="declineTag()">&#10060;</button></div>
     </div>
     <div class="col-lg-4">
@@ -54,7 +54,7 @@
         <p>What was the correct value?</p>
         <label for='digitTag' style='margin-right: 5px;'>Tag:</label>
           <input type='text' id='digitTag'>
-        <button class="btn" onclick='save()'>Save</button>
+        <button class="btn" onclick='save(true)'>Save</button>
       </div>
     </div>
   
