@@ -19,7 +19,7 @@ function declineTag() {
 
 // When the user clicks on <span> (x), close the modal
 function closeAcceptModal() {
-  var modal = document.getElementById('acceptTagModal');
+    var modal = document.getElementById('acceptTagModal');
     modal.style.display = "none";
 }
 

@@ -70,7 +70,7 @@ function save (){
 
 
     var tag = document.getElementById("digitTag").value;
-
+    console.log(tag);
     if(!tag){
         tag = 11;
     }

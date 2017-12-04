@@ -51,7 +51,10 @@
         <div class="modal-header">
           <h2>Incorrect Prediciton?</h2><span onclick='closeDeclineModal()' class='close'>&times;</span>
         </div>
-        <p>What was the correct value?</p><form><label for='tagNumber' style='margin-right: 5px;'>Tag:</label><input type='text' id='tagNumber'></form>
+        <p>What was the correct value?</p>
+        <label for='digitTag' style='margin-right: 5px;'>Tag:</label>
+          <input type='text' id='digitTag'>
+        <button class="btn" onclick='save()'>Save</button>
       </div>
     </div>
   
@@ -65,7 +68,7 @@
         </div>
          <p>Thanks! Your input has been added!</p>
         <div style="text-align: center">
-          <button class="btn" onlick='closeAcceptModal()'>OK!</button>
+          <button class="btn" onclick='closeAcceptModal()'>OK!</button>
         </div>
     </div>
   </div>
