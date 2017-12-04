@@ -4,11 +4,11 @@
         <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"> 
       <link rel="stylesheet" href="style/style.css">
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script src="js/drawing-app.js"></script>
       <script src="js/app.js"></script>
     </head>
-<body>
+<body onload="pencil()">
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -29,14 +29,10 @@
     </nav> 
   <div class="row">
     <div  class="col-lg-4">
-<!--      <div id="canvas">-->
       <div id="canvasDiv">
-        <script type="text/javascript"> $(document).ready(function() {
-            prepareCanvas();
-          });
-        </script>
+        <canvas id="drawDigit"></canvas>
       </div>
-      <button class="btn" id="clear" onclick="clearCanvas()" >Clear</button>
+      <button class="btn" id="clear" onclick="reset()" >Clear</button>
       <button class="btn" id="clear" onclick="submitNumber()" >Submit</button>
     </div>
     <div class="col-lg-2">
@@ -73,6 +69,6 @@
         </div>
     </div>
   </div>
-
+<script src="canvasBackend.js"></script>
 </body>
 </html>

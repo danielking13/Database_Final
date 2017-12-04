@@ -5,7 +5,8 @@ var canvas = document.getElementById("drawDigit");
 var ctx = canvas.getContext("2d");
 canvas.width = 280;
 canvas.height = 280;
-var width = canvas.width, height = canvas.height;
+var width = canvas.width;
+var height = canvas.height;
 var curX, curY, prevX, prevY;
 var hold = false;
 var fill_value = true, stroke_value = false;
@@ -16,17 +17,21 @@ ctx.lineWidth = 10;
 function reset (){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     canvas_data = { "pencil": []};
-    document.getElementById("imageArray").innerHTML = "<h1>&nbsp</h1>";
+    document.getElementById("display").innerHTML = "<h1>&nbsp</h1>";
 }
         
 
 // set up event listeners on the canvas to enable drawing        
 function pencil (){
-        
+    var BB=canvas.getBoundingClientRect();
+    var offsetX = BB.left;
+    var offsetY = BB.top;
 
     canvas.onmousedown = function (e){
-        curX = e.clientX - canvas.offsetLeft;
-        curY = e.clientY - canvas.offsetTop;
+        curX = e.clientX - offsetX;
+        console.log("Left: " + offsetX);
+        curY = e.clientY - offsetY;
+        console.log("Top: " + offsetY);
 
         hold = true;
             
@@ -38,8 +43,8 @@ function pencil (){
         
     canvas.onmousemove = function (e){
         if(hold){
-            curX = e.clientX - canvas.offsetLeft;
-            curY = e.clientY - canvas.offsetTop;
+            curX = e.clientX - offsetX;
+            curY = e.clientY - offsetY;
             draw();
         }
     };
@@ -122,11 +127,11 @@ function save (){
         success: function(data){
             console.log("returned");
             
-            document.getElementById("imageArray").innerHTML = data.prediction;
+            document.getElementById("display").innerHTML = data.prediction;
         },
         error: function(data){
             console.log("There was an error");
-            document.getElementById("imageArray").innerHTML = "There was a prediction error";
+            document.getElementById("display").innerHTML = "There was a prediction error";
         }
 
     });
