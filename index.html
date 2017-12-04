@@ -4,27 +4,61 @@
         <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"> 
         <style>
+          #clear {
+            margin: 0 0 0 30px;
+          }
+          #display {
+            border: 1px solid black;
+            width: 200px;
+            height: 200px;
+            margin-top: 30px;
+          }
+          #canvasDiv {
+            border: 1px solid black;
+            margin: 30px;
+            width: fit-content;
+          }
         </style>
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-      <script src="drawing-app.js"></script>
+      <script src="js/drawing-app.js"></script>
     </head>
 <body>
-    <nav class="navbar navbar-ex-lg navbar-dark bg-dark sticky-top">
-        <h2 class="navbar-text" >Neural Network Data Table</h2>
-        <div id="navbarNav ">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Home </a>
                 </li>
-            </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="displayTable.html">Data   Table</a><span class="sr-only">(current)</span>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Log out </a>
+                </li>
+            </ul>    
         </div>
-    </nav>
-  <div id="canvasDiv">
-    <script type="text/javascript"> $(document).ready(function() {
-    	 prepareCanvas();
-      });
-    </script>
-  </div>
-  <button onclick="clearCanvas()" >Clear</button>
+    </nav> 
+  <div class="row">
+    <div  class="col-lg-4">
+<!--      <div id="canvas">-->
+      <div id="canvasDiv">
+        <script type="text/javascript"> $(document).ready(function() {
+            prepareCanvas();
+          });
+        </script>
+      </div>
+      <button id="clear" onclick="clearCanvas()" >Clear</button>
+      <button id="clear" onclick="submitNumber()" >Submit</button>
+    </div>
+    <div class="col-lg-2">
+      <div id="display">
+      </div>
+    </div>
+    <div class="col-lg-4">
+    </div>
+    </div>
 </body>
 </html>

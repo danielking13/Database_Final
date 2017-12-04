@@ -1,7 +1,7 @@
 var canvas;
 var context;
-var canvasWidth = 490;
-var canvasHeight = 220;
+var canvasWidth = 300;
+var canvasHeight = 200;
 var padding = 25;
 var lineWidth = 8;
 var clickX = new Array();
@@ -47,8 +47,8 @@ function prepareCanvas()
 	canvas = document.createElement('canvas');
 	canvas.setAttribute('width', canvasWidth);
 	canvas.setAttribute('height', canvasHeight);
-	canvas.setAttribute('id', 'canvas');
-    canvas.setAttribute('style', "border: 1px solid black;");
+	canvas.setAttribute('id', 'canvasArea');
+//    canvas.setAttribute('border', '1px solid black');
 	canvasDiv.appendChild(canvas);
 	if(typeof G_vmlCanvasManager != 'undefined') {
 		canvas = G_vmlCanvasManager.initElement(canvas);
@@ -59,7 +59,7 @@ function prepareCanvas()
 
 	// Add mouse events
 	// ----------------
-	$('#canvas').mousedown(function(e)
+	$('#canvasDiv').mousedown(function(e)
 	{
 		// Mouse down location
 		var mouseX = e.pageX - this.offsetLeft;
@@ -70,19 +70,19 @@ function prepareCanvas()
 		redraw();
 	});
 	
-	$('#canvas').mousemove(function(e){
+	$('#canvasDiv').mousemove(function(e){
 		if(paint==true){
 			addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
 			redraw();
 		}
 	});
 	
-	$('#canvas').mouseup(function(e){
+	$('#canvasDiv').mouseup(function(e){
 		paint = false;
 	  	redraw();
 	});
 	
-	$('#canvas').mouseleave(function(e){
+	$('#canvasDiv').mouseleave(function(e){
 		paint = false;
 	});
 }
