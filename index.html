@@ -3,66 +3,7 @@
         <title>Network Data</title>
         <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"> 
-        <style>
-          #clear {
-            margin: 0 0 0 30px;
-          }
-          #display {
-            border: 1px solid black;
-            width: 200px;
-            height: 200px;
-            margin-top: 30px;
-            margin-bottom: 30px;
-          }
-          #canvasDiv {
-            border: 1px solid black;
-            margin: 30px;
-            width: fit-content;
-          }
-          
-          #setTag {
-            display: none;
-          }
-          
-          /* The Modal (background) */
-          .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            padding-top: 100px; /* Location of the box */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-          }
-
-          /* Modal Content */
-          .modal-content {
-            background-color: #fefefe;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-          }
-
-          /* The Close Button */
-          .close {
-            color: #aaaaaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-          }
-
-          .close:hover,
-          .close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-          }
-        </style>
+      <link rel="stylesheet" href="style/style.css">
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
       <script src="js/drawing-app.js"></script>
       <script src="js/app.js"></script>
@@ -101,7 +42,8 @@
     <div class="col-lg-2">
       <div id="display">
       </div>
-      <div id="setTag"><button id="add tag" class='btn' onclick="addTag()">This is a test</button></div>
+      <div id="setTag"><button id="accept" class='btn' onclick="acceptTag()">&#10004;</button></div>
+      <div id="declineTag"><button id="decline" class='btn' onclick="addTag()">&#10060;</button></div>
     </div>
     <div class="col-lg-4">
     </div>
@@ -110,8 +52,15 @@
     <div id="tagModal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
-        <span onclick="closeModal()" class="close">&times;</span>
-        <p>Some text in the Modal..</p>
+        <div class="modal-header">
+          <h2>Incorrect Prediciton?</h2>
+          <span onclick="closeModal()" class="close">&times;</span>
+        </div>
+        
+        <p>What was the correct value?</p>
+        <form>
+          <label for="tagNumber" style="margin-right: 5px;">Tag:   </label><input type="text" id="tagNumber">
+        </form>
       </div>
     </div>
 

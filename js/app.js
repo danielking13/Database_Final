@@ -1,7 +1,8 @@
 function submitNumber() {
   var testing = 0;
   $("#display").append('<h1>' + testing + '</h1>');
-  $("#setTag").css('display', 'initial');
+  $("#setTag").css('display', 'inline-block');
+  $("#declineTag").css('display', 'inline-block');
   
 }
 
