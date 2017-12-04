@@ -1,21 +1,30 @@
 function submitNumber() {
   var testing = 0;
   $("#display").append('<h1>' + testing + '</h1>');
-  $("#setTag").css('display', 'inline-block');
+  $("#acceptTag").css('display', 'inline-block');
   $("#declineTag").css('display', 'inline-block');
   
 }
 
-// When the user clicks the button, open the modal 
-function addTag() {
-    var modal = document.getElementById('tagModal');
-    console.log("test");
+// Set the prediction as incorrect and open modal to set the correct tag
+function acceptTag() {
+    var modal = document.getElementById('acceptTagModal');
+    modal.style.display = "block";
+}
+
+function declineTag() {
+    var modal = document.getElementById('declineTagModal');
     modal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
-function closeModal() {
-  var modal = document.getElementById('tagModal');
+function closeAcceptModal() {
+  var modal = document.getElementById('acceptTagModal');
+    modal.style.display = "none";
+}
+
+function closeDeclineModal() {
+  var modal = document.getElementById('declineTagModal');
     modal.style.display = "none";
 }
 

@@ -15,7 +15,7 @@
   width: fit-content;
 }
           
-#setTag, #declineTag {
+#acceptTag, #declineTag {
   display: none;
 }
           
