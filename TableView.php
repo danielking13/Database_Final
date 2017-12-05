@@ -42,15 +42,36 @@ class TableView
         foreach ($dataItems as $dataItem) {
             //retrieve the id, user, and tag from the neural network
             $id = $dataItem['id'];
-            $user = $dataItem['user']; // auto incremented user id
-            $image = $dataItem['img']; // need to turn image into an image from json array
-            //DEBUG
-//            echo "This is an image ";
-//            echo $image;
+            $user = $dataItem['user']; // auto incremented user id. need to join user and data tables
+            $image = $dataItem['img'];
             $tag = $dataItem['tag'];
 
+            $body .= "
+            <script>// input array is copied out of database
+                function populate(){
+                    var input = $image;
+                    var canvas = document.getElementById('outputCanvas');
+                    canvas.width = 28;
+                    canvas.height = 28;
+
+                    var ctx = canvas.getContext('2d'); 
+                    var imgData = ctx.createImageData(28,28);
+                    var j = 0;
+                    for(var i=0; i<imgData.data.length; i+=4){
+                        imgData.data[i]=0;
+                        imgData.data[i+1]=0;
+                        imgData.data[i+2]=0;
+                        imgData.data[i+3]=input[j];
+                        j++;
+                    }
+                    ctx.putImageData(imgData,0,0);
+                }
+            </script>";
+
             $body .= "<tr>";
-            $body .= "<td>$user</td><td>$image</td><td>$tag</td>"; //change user to to username using sql query joining the user table
+            //TODO: Fix the canvas and update id --> its always the first id
+            $body .= "<td>$user</td><td><canvas id='outputCanvas'></canvas></td><td>$tag</td>"; //change user to to username using sql query joining the user table
+            $body .= "<script>populate();</script>";
             $body .= "<td><form action='index.php' method='post'><input type='hidden' name='action' value='delete' /><input type='hidden' name='id' value='$id' /><input type='submit' value='Delete' class=\"btn btn-outline-primary btn-sm\"></form></td>";
             $body .= "<!-- Button trigger modal -->
             <td> 
@@ -68,26 +89,23 @@ class TableView
           <span aria-hidden=\"true\">&times;</span>
         </button>
       </div>
+      <form action=\"index.php\" method=\"post\">
       <div class=\"modal-body\"> 
-          <form action=\"index.php\" name=\"action\" method=\"post\">
             <label>New tag value</label>  
-            <input type=\"number\" name=\"action\" placeholder=\"Enter number 0-9\"/>
-        </form>           
+            <input type=\"number\" name=\"tag\" placeholder=\"$id Enter number 0-9\"/>           
       </div>
-      <div class=\"modal-footer\">
-          
+      <div class=\"modal-footer\">  
         <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Cancel</button> 
           <input type='hidden' name='action' value='update' /><input type='hidden' name='id' value='$id' />
-        <button type=\"submit\" value=\"update\" class=\"btn btn-primary\">Save changes</button>
+        <button type=\"submit\" value=\"Update\" class=\"btn btn-primary\">Save changes</button>
       </div>
+      </form>
     </div>
   </div>
 </div>";
-        }
+
+    }
         $body .= "</table>";
-
-
-
 
         return $this->page($body);
     }

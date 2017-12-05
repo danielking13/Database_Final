@@ -89,8 +89,12 @@ class TableModel
 //                array_push($dataItems, $row);
 //            }
 //        }
+//        return array($tasks, $this->error);
 
-        $sql = "SELECT userId, img, tag FROM data WHERE type = 'TRAIN' ORDER BY id ASC LIMIT 50";
+//        $stmt->close();
+
+
+        $sql = "SELECT id, img, tag FROM data WHERE type = 'TRAIN' ORDER BY id ASC LIMIT 50";
         if ($result = $this->mysqli->query($sql)) {
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
@@ -101,9 +105,6 @@ class TableModel
         } else {
             $this->error = $this->mysqli->error;
         }
-//        return array($tasks, $this->error);
-
-//        $stmt->close();
 
         return array($dataItems, $this->error);
     }
@@ -154,19 +155,19 @@ class TableModel
 //        }
 
         if (! $this->mysqli) {
-            $this->error = "No connection to database. Unable to update task.";
+            $this->error = "No connection to database. Unable to update tag.";
             return $this->error;
         }
 
         $id = $data['id'];
         if (! $id) {
-            $this->error = "No id specified for task to update.";
+            $this->error = "No id specified for tag to update.";
             return $this->error;
         }
 
         $tag = $data['tag'];
         if (! $tag) {
-            $this->error = "No title found for task to update. A tag is required.";
+            $this->error = "No tag found for tag to update. A tag is required.";
             return $this->error;
         }
 
@@ -180,7 +181,6 @@ class TableModel
             $this->error = "Execute of statement failed: " . $stmt->error;
             return $this->error;
         }
-
         $stmt->close();
 
         return $this->error;

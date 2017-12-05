@@ -23,9 +23,10 @@
             $this->views = new TableView();
 
             //TODO: probably default it to home page
-            $this->view = $_GET['view'] ? $_GET['view'] : 'default';
+            $this->view = $_GET['view'] ? $_GET['view'] : 'table';
 
             $this->action = $_POST['action'];
+//            echo $this->action;
         }
 
         public function __destruct()
@@ -59,16 +60,17 @@
                 case 'loginform':
                     print $this->views->loginView($this->data);
                     break;
-                case 'updateForm':
-                    print $this->views->updateView($this->data);
-                    break;
-                case 'default': //aka table view
+                case 'table':
                     list($items, $error) = $this->model->getDataSet();
                     if($error) {
                         $this->message = $error;
                     }
                     print $this->views->tableView($items, $this->message);
+                    break;
+                case 'default': //aka home view
+
             }
+
         }
         //TODO: check if this method is needed or if I need to change it
 //        private function verifyLogin() {
@@ -97,15 +99,12 @@
 
         private function handleUpdate() {
 //            if (!$this->verifyLogin()) return;
-
-            if ($_POST['cancel']) {
-                $this->view = 'table';
-                return;
-            }
-
+            echo $_POST['id'];
+            print "   ";
+            echo $_POST['tag'];
             if ($error = $this->model->updateDataItem($_POST)) {
                 $this->message = $error;
-                $this->view = 'updateForm';
+                $this->view = 'table';
                 $this->data = $_POST;
                 return;
             }
