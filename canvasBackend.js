@@ -66,14 +66,19 @@ function pencil (){
 }
         
 
-function save (){
-
-
-    var tag = document.getElementById("digitTag").value;
-    console.log(tag);
-    if(!tag){
-        tag = 11;
+function save (boolean){
+    var tag;
+    console.log(boolean);
+  
+    // If the prediction was accepted as true, we'll take the prediction tag from the display box
+    if(boolean){
+      tag = document.getElementById("displayPrediction").innerHTML; 
+      acceptTag();
     }
+    else if (!boolean){
+      tag = document.getElementById("digitTag").value;
+    }
+    console.log(tag);
 
     var canvasImage = ctx.getImageData(0,0, canvas.width, canvas.height);
 

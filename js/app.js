@@ -1,8 +1,10 @@
 function submitNumber() {
   var testing = 0;
-  $("#display").append('<h1>' + testing + '</h1>');
+  $("#display").append('<h1 id="displayPrediction">' + testing + '</h1>');
   $("#acceptTag").css('display', 'inline-block');
   $("#declineTag").css('display', 'inline-block');
+  var h1 = document.getElementById("displayPrediction");
+  console.log(h1);
   
 }
 
