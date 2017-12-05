@@ -3,9 +3,7 @@ function submitNumber() {
   $("#display").append('<h1 id="displayPrediction">' + testing + '</h1>');
   $("#acceptTag").css('display', 'inline-block');
   $("#declineTag").css('display', 'inline-block');
-  var h1 = document.getElementById("displayPrediction");
-  console.log(h1);
-  
+  $("#information").css('display', 'inline-block');
 }
 
 // Set the prediction as incorrect and open modal to set the correct tag
@@ -28,6 +26,12 @@ function closeAcceptModal() {
 function closeDeclineModal() {
   var modal = document.getElementById('declineTagModal');
     modal.style.display = "none";
+}
+
+function hideButtons(){
+  $("#acceptTag").css('display', 'none');
+  $("#declineTag").css('display', 'none');
+  $("#display").innerHTML("");
 }
 
 // When the user clicks anywhere outside of the modal, close it

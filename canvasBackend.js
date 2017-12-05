@@ -77,6 +77,7 @@ function save (boolean){
     }
     else if (!boolean){
       tag = document.getElementById("digitTag").value;
+      closeDeclineModal();
     }
     console.log(tag);
 
@@ -141,4 +142,5 @@ function save (boolean){
 
     });
 
+    hideButtons();
 }
