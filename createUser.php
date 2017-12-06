@@ -17,7 +17,7 @@ session_start();
 	$loggedIn = empty($_SESSION['loggedin']) ? false : $_SESSION['loggedin'];
 	
 	if ($loggedIn) {
-		header("Location: home.html");
+		header("Location: home.php");
 		exit;
 	}
 	
@@ -42,7 +42,7 @@ session_start();
 	    $email = empty($_POST['email']) ? '' : $_POST['email']; 
         
         // Require the credentials
-        require_once '../db.conf';
+        require_once 'db.conf';
         
         // Connect to the database
         $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
@@ -61,7 +61,11 @@ session_start();
         // helps prevent some but not all SQL injection attacks
         $username = $mysqli->real_escape_string($username);
         $password = $mysqli->real_escape_string($password);
-        
+        $firstName = $mysqli->real_escape_string($firstName);
+        $lastName = $mysqli->real_escape_string($lastName);
+        $email = $mysqli->real_escape_string($email);
+            
+            
         //more secure password storing for website
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT); 
         
@@ -70,7 +74,7 @@ session_start();
             $checkRepeatQuery = "SELECT id FROM users WHERE username = '$username'" ; 
 
             //Query to insert new data into database
-		$query = "insert into users (firstName, lastName, username, hashedPassword, email, addDate, changeDate) values ('$firstName' , '$lastName', '$username' , '$hashedPassword', '$email' , now() , now() )" ; 
+		$query = "insert into users (firstName, lastName, username, password, email) values ('$firstName' , '$lastName', '$username' , '$hashedPassword', '$email')" ; 
             
             //run query to mysql testing for repeat username
             $repeatResult = $mysqli->query($checkRepeatQuery); 

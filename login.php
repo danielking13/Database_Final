@@ -16,7 +16,7 @@ session_start();
 	$loggedIn = empty($_SESSION['loggedin']) ? false : $_SESSION['loggedin'];
 	
 	if ($loggedIn) {
-		header("Location: home.html");
+		header("Location: home.php");
 		exit;
 	}
 	
@@ -35,7 +35,7 @@ session_start();
         
         
         // Require the credentials
-        require_once '../db.conf';
+        require_once 'db.conf';
         
         // Connect to the database
         $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
@@ -72,7 +72,7 @@ session_start();
             
             if (password_verify($password, $row['password'])) {
                 $_SESSION['loggedin'] = $username ; 
-                header("Location: home.html"); 
+                header("Location: home.php"); 
                 exit; 
             }
         

@@ -30,6 +30,6 @@
 	
 	
 	// Redirect to login
-	header("Location: login.php");
+	header("Location: index.php");
 	exit;
 ?>
