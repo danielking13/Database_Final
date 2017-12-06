@@ -32,12 +32,13 @@ class TableView
 
         $body .= "<table class='table table-hover table-dark'>";
         $body .= "<tr>
-                    <th>user</th>
-                    <th>image</th>
+                    <th>User</th>
+                    <th>Image</th>
                     <th>Tag</th>
                     <th></th>
                     <th></th>
                  </tr>";
+        $counter = 0;
         //generate data from database
         foreach ($dataItems as $dataItem) {
             //retrieve the id, user, and tag from the neural network
@@ -45,12 +46,12 @@ class TableView
             $user = $dataItem['user']; // auto incremented user id. need to join user and data tables
             $image = $dataItem['img'];
             $tag = $dataItem['tag'];
-
+            $counter++;
             $body .= "
             <script>// input array is copied out of database
                 function populate(){
                     var input = $image;
-                    var canvas = document.getElementById('outputCanvas');
+                    var canvas = document.getElementById('$counter');
                     canvas.width = 28;
                     canvas.height = 28;
 
@@ -70,16 +71,16 @@ class TableView
 
             $body .= "<tr>";
             //TODO: Fix the canvas and update id --> its always the first id
-            $body .= "<td>$user</td><td><canvas id='outputCanvas'></canvas></td><td>$tag</td>"; //change user to to username using sql query joining the user table
+            $body .= "<td>$user</td> <td style='width: 20px;' class='table-light'><canvas style='text-align: center' id='$counter'></canvas></td><td>$tag</td>"; //change user to to username using sql query joining the user table
             $body .= "<script>populate();</script>";
-            $body .= "<td><form action='index.php' method='post'><input type='hidden' name='action' value='delete' /><input type='hidden' name='id' value='$id' /><input type='submit' value='Delete' class=\"btn btn-outline-primary btn-sm\"></form></td>";
+            $body .= "<td><form action='table.php' method='post'><input type='hidden' name='action' value='delete' /><input type='hidden' name='id' value='$id' /><input type='submit' value='Delete' class=\"btn btn-outline-primary btn-sm\"></form></td>";
             $body .= "<!-- Button trigger modal -->
             <td> 
-                <button type=\"button\" class=\"btn btn-outline-primary btn-sm\" data-toggle=\"modal\" data-target=\"#updateModal\">Update</button>
+                <button type=\"button\" class=\"btn btn-outline-primary btn-sm\" data-toggle=\"modal\" data-target=\"#$counter\">Update</button>
             </td>";
             $body .= "</tr>";
 
-            $body .= "<div class=\"modal fade\" id=\"updateModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"modalLabel\" aria-hidden=\"true\">
+            $body .= "<div class=\"modal fade\" id=\"$counter\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"modalLabel\" aria-hidden=\"true\">
   <div class=\"modal-dialog\" role=\"document\">
     <div class=\"modal-content\">
       <div class=\"modal-header\">
@@ -89,7 +90,7 @@ class TableView
           <span aria-hidden=\"true\">&times;</span>
         </button>
       </div>
-      <form action=\"index.php\" method=\"post\">
+      <form action=\"table.php\" method=\"post\">
       <div class=\"modal-body\"> 
             <label>New tag value</label>  
             <input type=\"number\" name=\"tag\" placeholder=\"$id Enter number 0-9\"/>           
@@ -142,10 +143,10 @@ class TableView
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="home.html">Home </a>
+                    <a class="nav-link" href="index.html">Home </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="displayTable.html">Data   Table</a><span class="sr-only">(current)</span>
+                    <a class="nav-link" href="table.php">Data   Table</a><span class="sr-only">(current)</span>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Log out </a>

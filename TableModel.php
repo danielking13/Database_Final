@@ -10,13 +10,11 @@ class TableModel
 {
     private $error = '';
     private $mysqli;
-    private $user;
 
     public function __construct()
     {
         session_start();
         $this->initDatabaseConnection();
-//        $this->restoreUser();
     }
 
     public function __destruct() {
@@ -37,62 +35,14 @@ class TableModel
         }
     }
 
-//    public function getUser() {
-//        return $this->user;
-//    }
-//
-//    private function restoreUser() {
-//        if ($loginID = $_SESSION['loginid']) {
-//            $this->user = new User();
-//            if (!$this->user->load($loginID, $this->mysqli)) {
-//                $this->user = null;
-//            }
-//        }
-//    }
-//
-//    public function logout() {
-//        $this->user = null;
-//        $_SESSION['loginid'] = '';
-//    }
-
     public function getDataSet() {
         $this->error = '';
         $dataItems = array();
-
-//        if (!$this->user) {
-//            $this->error = "User not specified. Unable to get data set";
-//            return array($dataItems, $this->error);
-//        }
 
         if (! $this->mysqli) {
             $this->error = "No connection to database.";
             return array($dataItems, $this->error);
         }
-//TODO: Remove
-//        $stmt = $this->mysqli->prepare("SELECT userId, img, tag FROM data WHERE type = 'TRAIN' ORDER BY id ASC");
-//        if (! ($stmt->bind_param("i", $)) ) {
-//            $this->error = "Prepare failed: " . $this->mysqli->error;
-//            return array($dataItems, $this->error);
-//        }
-//
-//        if (! $stmt->execute() ) {
-//            $this->error = "Execute of statement failed: " . $stmt->error;
-//            return array($dataItems, $this->error);
-//        }
-//        if (! ($result = $stmt->get_result()) ) {
-//            $this->error = "Getting result failed: " . $stmt->error;
-//            return array($dataItems, $this->error);
-//        }
-//
-//        if ($result->num_rows > 0) {
-//            while($row = $result->fetch_assoc()) {
-//                array_push($dataItems, $row);
-//            }
-//        }
-//        return array($tasks, $this->error);
-
-//        $stmt->close();
-
 
         $sql = "SELECT id, img, tag FROM data WHERE type = 'TRAIN' ORDER BY id ASC LIMIT 50";
         if ($result = $this->mysqli->query($sql)) {
@@ -111,11 +61,6 @@ class TableModel
 
     public function deleteDataItem($id) {
         $this->error = '';
-
-//        if (!$this->user) {
-//            $this->error = "User not specified. Unable to delete task.";
-//            return $this->error;
-//        }
 
         if (! $this->mysqli) {
             $this->error = "No connection to database. Unable to delete task.";
@@ -148,11 +93,6 @@ class TableModel
      */
     public function updateDataItem($data) {
         $this->error = '';
-
-//        if (!$this->user) {
-//            $this->error = "User not specified. Unable to update task.";
-//            return $this->error;
-//        }
 
         if (! $this->mysqli) {
             $this->error = "No connection to database. Unable to update tag.";

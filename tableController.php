@@ -26,7 +26,6 @@
             $this->view = $_GET['view'] ? $_GET['view'] : 'table';
 
             $this->action = $_POST['action'];
-//            echo $this->action;
         }
 
         public function __destruct()
@@ -52,7 +51,6 @@
                     $this->handleUpdate();
                     break;
                 default:
-//                    $this->verifyLogin();
             }
 
             //generate view
@@ -72,24 +70,8 @@
             }
 
         }
-        //TODO: check if this method is needed or if I need to change it
-//        private function verifyLogin() {
-//            if (! $this->model->getUser()) {
-//                $this->view = 'loginform';
-//                return false;
-//            } else {
-//                return true;
-//            }
-//        }
-        //TODO: same here
-//        private function processLogout() {
-//            if ($_GET['logout']) {
-//                $this->model->logout();
-//            }
-//        }
 
         private function handleDelete() {
-//            if (!$this->verifyLogin()) return;
 
             if ($error = $this->model->deleteDataItem($_POST['id'])) {
                 $this->message = $error;
@@ -98,10 +80,7 @@
         }
 
         private function handleUpdate() {
-//            if (!$this->verifyLogin()) return;
-            echo $_POST['id'];
-            print "   ";
-            echo $_POST['tag'];
+
             if ($error = $this->model->updateDataItem($_POST)) {
                 $this->message = $error;
                 $this->view = 'table';
