@@ -13,7 +13,7 @@ Kolton Speer
 Julia Wopata
 
 
-###Things to be added:
+### Things to be added:
 
 - a description of the application (a paragraph or two that tells what the application does and what purpose it serves).
 - the schema for the database (the table definitions).
