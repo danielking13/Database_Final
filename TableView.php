@@ -8,8 +8,7 @@
  */
 class TableView
 {
-    private $pageTitle = 'Digit Recognizer';
-    private $stylesheet = '';
+    private $pageTitle = '';
 
     public function __construct() {
     }
@@ -41,9 +40,9 @@ class TableView
         $counter = 0;
         //generate data from database
         foreach ($dataItems as $dataItem) {
-            //retrieve the id, user, and tag from the neural network
+            //retrieve the id, user, image array, and tag from the neural network
             $id = $dataItem['id'];
-            $user = $dataItem['user']; // auto incremented user id. need to join user and data tables
+            $user = $dataItem['user'];
             $image = $dataItem['img'];
             $tag = $dataItem['tag'];
             $counter++;
@@ -70,8 +69,8 @@ class TableView
             </script>";
 
             $body .= "<tr>";
-            //TODO: Fix the canvas and update id --> its always the first id
-            $body .= "<td>$user</td> <td style='width: 20px;' class='table-light'><canvas style='text-align: center' id='$counter'></canvas></td><td>$tag</td>"; //change user to to username using sql query joining the user table
+            //TODO: change user to to username using sql query joining the user table
+            $body .= "<td>$user</td> <td style='width: 20px;' class='table-light'><canvas style='text-align: center' id='$counter'></canvas></td><td>$tag</td>";
             $body .= "<script>populate();</script>";
             $body .= "<td><form action='table.php' method='post'><input type='hidden' name='action' value='delete' /><input type='hidden' name='id' value='$id' /><input type='submit' value='Delete' class=\"btn btn-outline-primary btn-sm\"></form></td>";
             $body .= "<!-- Button trigger modal -->
@@ -93,7 +92,7 @@ class TableView
       <form action=\"table.php\" method=\"post\">
       <div class=\"modal-body\"> 
             <label>New tag value</label>  
-            <input type=\"number\" name=\"tag\" placeholder=\"$id Enter number 0-9\"/>           
+            <input type=\"number\" name=\"tag\" placeholder=\"Enter number 0-9\"/>           
       </div>
       <div class=\"modal-footer\">  
         <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Cancel</button> 
@@ -112,7 +111,7 @@ class TableView
     }
 
     public function errorView($message) {
-        $body = "<p>$message</p>\n";
+        $body = "<p>$message</p>";
         return $this->page($body);
     }
 
@@ -122,18 +121,10 @@ class TableView
 <html>
 <head>
     <title>{$this->pageTitle}</title>
-    <link rel="stylesheet" type="text/css" href="{$this->stylesheet}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"> 
      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script> 
-    <style>    
-        .images {
-            width: 65px;
-            height: 80px;
-            border-radius: 5px;
-        }
-    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
@@ -143,13 +134,13 @@ class TableView
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home </a>
+                    <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="table.php">Data   Table</a><span class="sr-only">(current)</span>
+                    <a class="nav-link" href="table.php">Data Table</a><span class="sr-only">(current)</span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Log out </a>
+                    <a class="nav-link" href="#">Log out</a>
                 </li>
             </ul>    
         </div>

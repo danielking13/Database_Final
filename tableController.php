@@ -12,7 +12,6 @@
         private $model;
         private $views;
 
-        private $view = '';
         private $action = '';
         private $message = '';
         private $data = array();
@@ -21,10 +20,6 @@
         {
             $this->model = new TableModel();
             $this->views = new TableView();
-
-            //TODO: probably default it to home page
-            $this->view = $_GET['view'] ? $_GET['view'] : 'table';
-
             $this->action = $_POST['action'];
         }
 
@@ -40,8 +35,6 @@
                 exit;
             }
 
-//            $this->processLogout();
-
             //handle deletes and updates of page
             switch($this->action) {
                 case 'delete':
@@ -51,24 +44,15 @@
                     $this->handleUpdate();
                     break;
                 default:
+                    //Do nothing
             }
 
             //generate view
-            switch ($this->view) {
-                case 'loginform':
-                    print $this->views->loginView($this->data);
-                    break;
-                case 'table':
-                    list($items, $error) = $this->model->getDataSet();
-                    if($error) {
-                        $this->message = $error;
-                    }
-                    print $this->views->tableView($items, $this->message);
-                    break;
-                case 'default': //aka home view
-
+            list($items, $error) = $this->model->getDataSet();
+            if($error) {
+                $this->message = $error;
             }
-
+            print $this->views->tableView($items, $this->message);
         }
 
         private function handleDelete() {
@@ -76,19 +60,15 @@
             if ($error = $this->model->deleteDataItem($_POST['id'])) {
                 $this->message = $error;
             }
-            $this->view = 'table';
         }
 
         private function handleUpdate() {
 
             if ($error = $this->model->updateDataItem($_POST)) {
                 $this->message = $error;
-                $this->view = 'table';
                 $this->data = $_POST;
                 return;
             }
-
-            $this->view = 'table';
         }
 
     }

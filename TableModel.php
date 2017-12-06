@@ -63,12 +63,12 @@ class TableModel
         $this->error = '';
 
         if (! $this->mysqli) {
-            $this->error = "No connection to database. Unable to delete task.";
+            $this->error = "No connection to database. Unable to delete data item.";
             return $this->error;
         }
 
         if (! $id) {
-            $this->error = "No id specified for task to delete.";
+            $this->error = "No id specified for the data item to delete.";
             return $this->error;
         }
 
@@ -88,7 +88,7 @@ class TableModel
         return $this->error;
     }
 
-    /*
+    /* Used to create a SQL query to database to update tags
      * @param $data is the POST array with all our current data items
      */
     public function updateDataItem($data) {
