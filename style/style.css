@@ -100,3 +100,12 @@
 #acceptDeclineBtns{
   text-align: center;
 }
+
+
+#display {
+  background-color: #eee;
+}
+        
+#drawDigit {
+  background-color: #eee;
+}

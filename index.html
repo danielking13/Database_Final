@@ -29,6 +29,9 @@
           border-radius: 0px;
           font-size: 16px;
         }
+        body {
+          background-color: #212429;
+        }
       </style>
     </head>
 <body onload="pencil()">
@@ -106,11 +109,11 @@
     <div id="acceptTagModal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header" style="height: 80px;">
           <h2>Added!</h2>
           <span onclick='closeAcceptModal()' class='close'>&times;</span>
         </div>
-         <p>Thanks! Your input has been added!</p>
+         <p style="font-size: 20px; margin-top: 10px;">Thanks! Your input has been added!</p>
         <div class="modal-interior">
           <button class="btn" onclick='closeAcceptModal()'>OK!</button>
         </div>
