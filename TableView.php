@@ -42,7 +42,7 @@ class TableView
         foreach ($dataItems as $dataItem) {
             //retrieve the id, user, image array, and tag from the neural network
             $id = $dataItem['id'];
-            $user = $dataItem['user'];
+            $username = $dataItem['username'];
             $image = $dataItem['img'];
             $tag = $dataItem['tag'];
             $counter++;
@@ -69,13 +69,12 @@ class TableView
             </script>";
 
             $body .= "<tr>";
-            //TODO: change user to username using sql query joining the user table
-            $body .= "<td>$user</td> <td style='width: 280px;' class='table-light'><canvas style='text-align: center' id='$counter'></canvas></td><td>$tag</td>";
+            $body .= "<td>$username</td> <td style='width: 280px;' class='table-light'><canvas id='$counter'></canvas></td><td style='font-size: 40px; padding-top: 0px;'>$tag</td>";
             $body .= "<script>populate();</script>";
-            $body .= "<td><form action='table.php' method='post'><input type='hidden' name='action' value='delete' /><input type='hidden' name='id' value='$id' /><input type='submit' value='Delete' class=\"btn btn-outline-primary btn-sm\"></form></td>";
+            $body .= "<td><form action='table.php' method='post'><input type='hidden' name='action' value='delete' /><input type='hidden' name='id' value='$id' /><input type='submit' value='Delete' class=\"btn btn-outline-primary btn-md\"></form></td>";
             $body .= "<!-- Button trigger modal -->
             <td> 
-                <button type=\"button\" class=\"btn btn-outline-primary btn-sm\" data-toggle=\"modal\" data-target=\"#$counter\">Update</button>
+                <button type=\"button\" class=\"btn btn-outline-primary btn-md\" data-toggle=\"modal\" data-target=\"#$counter\">Update</button>
             </td>";
             $body .= "</tr>";
 

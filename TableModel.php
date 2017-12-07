@@ -44,7 +44,7 @@ class TableModel
             return array($dataItems, $this->error);
         }
 
-        $sql = "SELECT id, img, tag FROM data WHERE type = 'TEST' ORDER BY id ASC";
+        $sql = "SELECT users.username, data.img, data.tag FROM users INNER JOIN data ON users.id = data.userId WHERE data.type = 'TEST' ORDER BY data.id ASC";
         if ($result = $this->mysqli->query($sql)) {
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
