@@ -43,8 +43,8 @@ class TableModel
             $this->error = "No connection to database.";
             return array($dataItems, $this->error);
         }
-        //TODO: Fix this sql statement when we have real data
-        $sql = "SELECT id, img, tag FROM data WHERE type = 'TRAIN' ORDER BY id ASC LIMIT 50";
+
+        $sql = "SELECT id, img, tag FROM data WHERE type = 'TEST' ORDER BY id ASC";
         if ($result = $this->mysqli->query($sql)) {
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {

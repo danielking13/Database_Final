@@ -51,11 +51,11 @@ class TableView
                 function populate(){
                     var input = $image;
                     var canvas = document.getElementById('$counter');
-                    canvas.width = 28;
-                    canvas.height = 28;
+                    canvas.width = 280;
+                    canvas.height = 280;
 
                     var ctx = canvas.getContext('2d'); 
-                    var imgData = ctx.createImageData(28,28);
+                    var imgData = ctx.createImageData(280,280);
                     var j = 0;
                     for(var i=0; i<imgData.data.length; i+=4){
                         imgData.data[i]=0;
@@ -69,8 +69,8 @@ class TableView
             </script>";
 
             $body .= "<tr>";
-            //TODO: change user to to username using sql query joining the user table
-            $body .= "<td>$user</td> <td style='width: 20px;' class='table-light'><canvas style='text-align: center' id='$counter'></canvas></td><td>$tag</td>";
+            //TODO: change user to username using sql query joining the user table
+            $body .= "<td>$user</td> <td style='width: 280px;' class='table-light'><canvas style='text-align: center' id='$counter'></canvas></td><td>$tag</td>";
             $body .= "<script>populate();</script>";
             $body .= "<td><form action='table.php' method='post'><input type='hidden' name='action' value='delete' /><input type='hidden' name='id' value='$id' /><input type='submit' value='Delete' class=\"btn btn-outline-primary btn-sm\"></form></td>";
             $body .= "<!-- Button trigger modal -->
