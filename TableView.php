@@ -25,7 +25,7 @@ class TableView
         }
         //if there aren't any number entries
         if (count($dataItems) < 1) {
-            $body .= "<h4>No data to display :(</h4>\n";
+            $body .= "<h4 style='padding: 20px;'>No data to display :(</h4>\n";
             return $this->page($body);
         }
 
