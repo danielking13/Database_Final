@@ -21,11 +21,11 @@ class TableView
         $this->pageTitle = 'Neural Network Data';
 
         if($message) {
-            $body .= "<p>$message</p>";
+            $body .= "<h3>$message</h3>";
         }
         //if there aren't any number entries
         if (count($dataItems) < 1) {
-            $body .= "<p>No data to display :(</p>\n";
+            $body .= "<h4>No data to display :(</h4>\n";
             return $this->page($body);
         }
 
@@ -103,7 +103,6 @@ class TableView
     </div>
   </div>
 </div>";
-
     }
         $body .= "</table>";
 

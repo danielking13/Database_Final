@@ -19,8 +19,6 @@
 	}
 ?>
 
-        
-        
         <title>Network Data</title>
         <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"> 
@@ -63,10 +61,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Home </a>
+                    <a class="nav-link active" href="#">Home </a><span class="sr-only">(current)</span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="table.php">Data   Table</a><span class="sr-only">(current)</span>
+                    <a class="nav-link" href="table.php">Data Table</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php">Log out </a>
