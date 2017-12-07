@@ -8,6 +8,8 @@
 #loginWidget > h1 {
     margin: 0;
     padding: 2px;
+    background-color: navy; 
+    color: white; 
 }
 #loginWidget form {
     background-color: #EEE;
@@ -30,4 +32,25 @@ div.pageWidget {
     width: 600px;
     margin: 50px auto;
     text-align: center;
+}
+
+body {
+    background-image: url('http://www.reuun.com/data/out/56/402921691-gif-wallpapers.gif'); 
+    background-size: cover; 
+}
+
+a{
+    color: white; 
+    font-size: 20px; 
+}
+
+a:visited {
+    color: white; 
+}
+a:hover {
+    color: white; 
+}
+#error {
+    background-color: red; 
+    color: white; 
 }

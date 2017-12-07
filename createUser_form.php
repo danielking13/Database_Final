@@ -7,10 +7,12 @@
 <html>
 <head>
 	<title>Create User Account</title>
-	<link href="app.css" rel="stylesheet" type="text/css">
-    <link href="../jquery-ui-1.11.4.custom/jquery-ui.min.css" rel="stylesheet" type="text/css">
+<!--	<link href="app.css" rel="stylesheet" type="text/css">-->
+    	<link href="app.css" rel="stylesheet" type="text/css">
+    <link href="jquery-ui-1.12.1.custom/jquery-ui.theme.css" rel="stylesheet" type="text/css">
+ <!--   <link href="../jquery-ui-1.11.4.custom/jquery-ui.min.css" rel="stylesheet" type="text/css">
     <script src="../jquery-ui-1.11.4.custom/external/jquery/jquery.js"></script>
-    <script src="../jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+    <script src="../jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>-->
     <script>
         $(function(){
             $("input[type=submit]").button();
@@ -37,11 +39,11 @@
 </head>
 <body>
     <div id="loginWidget" class="ui-widget">
-        <h1 class="ui-widget-header">Login</h1>
+        <h1 class="ui-widget-header">Create User</h1>
         
         <?php
             if ($error) {
-                print "<div class=\"ui-state-error\">$error</div>\n";
+                print "<div id=\"error\">$error</div>\n";
             }
         ?>
         
