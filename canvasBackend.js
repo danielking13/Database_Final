@@ -74,13 +74,19 @@ function save (boolean){
     if(boolean){
       tag = document.getElementById("displayPrediction").innerHTML; 
       acceptTag();
+      sendImage(tag);
     }
     else if (!boolean){
       tag = document.getElementById("digitTag").value;
       closeDeclineModal();
+      sendImage(tag);
     }
     console.log(tag);
 
+    hideButtons();
+}
+
+function sendImage(tag){
     var canvasImage = ctx.getImageData(0,0, canvas.width, canvas.height);
 
     // collect a vector of grayscale values for each pixel
@@ -89,6 +95,25 @@ function save (boolean){
         blackVals.push(canvasImage.data[i]);
     }
 
+    $.ajax({
+        url: 'insertImage.php',
+        data: {
+            img: JSON.stringify(blackVals),
+            tag: JSON.stringify(tag)
+        },
+        dataType: 'json',
+        type:"POST",
+        success: function(data){
+            console.log("returned " + data.error);
+            
+            //document.getElementById("display").innerHTML = data.prediction;
+        },
+        error: function(data){
+            console.log("There was an error: " + data.error);
+            //document.getElementById("display").innerHTML = "There was a prediction error";
+        }
+    });
+    /*
     // reshape into image format
     var grayscaleImg = [];
     var j;
@@ -105,42 +130,20 @@ function save (boolean){
     // resize from 280 x 280 to 28x28
     var output =[];
     for (var y = 0; y < 28; y++) {
-       	output[y]=[];
-       	for (var x = 0; x < 28; x++) {
-           	var mean = 0;
-           	for (var v = 0; v < 10; v++) {
-            	for (var h = 0; h < 10; h++) {
-                	mean += grayscaleImg[y*10 + v][x*10 + h];
-              	}
+        output[y]=[];
+        for (var x = 0; x < 28; x++) {
+            var mean = 0;
+            for (var v = 0; v < 10; v++) {
+                for (var h = 0; h < 10; h++) {
+                    mean += grayscaleImg[y*10 + v][x*10 + h];
+                }
             }
 
-           	mean = mean/100;
+            mean = mean/100;
 
             output[y][x]=mean;
           }
     }
-
+    */
     // request a prediction
-    $.ajax({
-        url: 'predict_digit/',
-        data: {
-            //csrfmiddlewaretoken: '{{ csrf_token }}',
-            digitArray: JSON.stringify(output),
-            tag: JSON.stringify(tag)
-        },
-        dataType: 'json',
-        type:"POST",
-        success: function(data){
-            console.log("returned");
-            
-            document.getElementById("display").innerHTML = data.prediction;
-        },
-        error: function(data){
-            console.log("There was an error");
-            document.getElementById("display").innerHTML = "There was a prediction error";
-        }
-
-    });
-
-    hideButtons();
 }
