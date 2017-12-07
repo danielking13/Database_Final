@@ -8,9 +8,14 @@
 <head>
 	<title>Database Login</title>
 	<link href="app.css" rel="stylesheet" type="text/css">
-    <link href="../jquery-ui-1.11.4.custom/jquery-ui.min.css" rel="stylesheet" type="text/css">
-    <script src="../jquery-ui-1.11.4.custom/external/jquery/jquery.js"></script>
-    <script src="../jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+    <link href="jquery-ui-1.12.1.custom/jquery-ui.theme.css" rel="stylesheet" type="text/css">
+<!--    <link href="jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet" type="text/css">-->
+    
+    
+<!--
+    <script src="../jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+    <script src="../jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+-->
     <script>
         $(function(){
             $("input[type=submit]").button();
@@ -23,11 +28,11 @@
         
         <?php
             if ($error) {
-                print "<div class=\"ui-state-error\">$error</div>\n";
+                print "<div id = \"error\">$error</div>\n";
             }
         
             if ($success) {
-             print "<div class=\"ui-state-error\">$success</div>\n";   
+             print "<div id=\"error\">$success</div>\n";   
             }
         ?>
         
@@ -53,7 +58,7 @@
              
         </form>
          <br>
-            <a href = "createUser_form.php">Not a User?</a>
+            <a href = "createUser_form.php">Not a user?</a>
         
     </div>
 </body>
