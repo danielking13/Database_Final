@@ -1,5 +1,5 @@
 function submitNumber() {
-  var testing = 0;
+  var testing = predict();
   $("#display").append('<h1 id="displayPrediction">' + testing + '</h1>');
   $("#acceptTag").css('display', 'inline-block');
   $("#declineTag").css('display', 'inline-block');

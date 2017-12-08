@@ -5,7 +5,6 @@
  * Date: 11/29/17
  * Time: 8:19 PM
  */
-
       session_start(); 
     
 	// Every time we want to access $_SESSION, we have to call session_start()

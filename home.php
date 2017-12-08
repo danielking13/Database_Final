@@ -138,6 +138,6 @@
         </div>
     </div>
   </div>
-<script src="canvasBackend.js"></script>
+<script src="js/canvasBackend.js"></script>
 </body>
 </html>

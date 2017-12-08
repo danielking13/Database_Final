@@ -46,6 +46,7 @@ class TableView
             $image = $dataItem['img'];
             $tag = $dataItem['tag'];
             $counter++;
+            
             $body .= "
             <script>// input array is copied out of database
                 function populate(){

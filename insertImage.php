@@ -1,4 +1,7 @@
  <?php
+
+    session_start();
+
  // Require the credentials
 	require_once 'db.conf';
         
@@ -11,11 +14,26 @@
         exit;
     }// end error check on database connection
 
+    $username = $_SESSION['loggedin'];
+
+    $userQuery = "SELECT id FROM users WHERE username = '$username'";
+
+    $userResult = $mysqli->query($userQuery);
+        
+    if ($userResult) {
+        $queryReturn = $userResult->fetch_assoc(); 
+        $userIdResult = $queryReturn["id"];
+        //$mysqliResult->close();
+    }
+    else{
+        $userIdResult = 1;
+    }
+
     $img = empty($_POST['img']) ? '' : $_POST['img'];
     $tag = empty($_POST['tag']) ? '' : $_POST['tag'];
-    $userId = 1; //empty($_POST['confirmPassword']) ? '' : $_POST['confirmPassword'];
+    $userId = $userIdResult;
 	$type = 'TEST';
-	
+
     $query = "insert into data (id,img,tag,userId,type) values (NULL , '$img', $tag , $userId, '$type')" ;
 
     $addImgQuery = $mysqli->query($query);
